@@ -38,20 +38,23 @@ document.addEventListener("DOMContentLoaded", function() {
             prepareMove();
         };
 
- setInterval(function() {
-            if (announced_game_over) {
-                return;
-            }
-            if (game.game_over()) {
-                announced_game_over = true;
-                $('#game-score').text("Game Over");
+setInterval(function() {
+    if (announced_game_over) {
+        return;
+    }
+    if (game.game_over()) {
+        announced_game_over = true;
 
-                // Check if white won and display the congratulatory message
-                if (game.in_checkmate() && game.turn() === 'b') {
-                    alert("Congratulations! White wins!");
-                }
-            }
-        }, 1000);
+        // Check if Black wins
+        if (game.turn() === 'w' && game.in_checkmate()) {
+            alert("Game over, try again");
+        } else if (game.turn() === 'b' && game.in_checkmate()) {
+            alert("Congratulations! Your code is 1234");
+        } else {
+            $('#game-score').text("Game Over");
+        }
+    }
+}, 1000);
 
         function uciCmd(cmd, which) {
             console.log("UCI: " + cmd);
