@@ -67,6 +67,9 @@
             margin-top: 10px; /* Space between button rows */
             display: none;
         }
+        #difficulty {
+            display:flex;
+        }
     </style>
 </head>
 
@@ -108,7 +111,7 @@
                                         <option value="Player vs Player">Player vs Player</option>
                                     </select>
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3" id="difficulty">
                                     <label for="skillLevel" class="form-label">Computer Skill Level (0-20)</label>
                                     <input type="number" class="form-control" id="skillLevel" value="20" min="0" max="20">
                                 </div>
