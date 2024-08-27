@@ -13,31 +13,35 @@
     <script src="./js/chess.min.js"></script>
     <style>
         .boardAndScorebar {
-            display:flex;
-            flex-direction:row;
-            background-color:red;
-            margin:auto;
-        }
+            display: flex;
+            flex-direction: row;
+            background-color: red;
+        } /* Added missing closing bracket */
+
         .board-container {
             display: flex;
             max-width: 610px;
             margin: 20px auto;
         }
+
         #board {
             max-width: 600px;
             width: 600px;
             position: relative;
         }
+
         #score-bar-container {
             width: 10px;
             background-color: #3b4252ff;
         }
+
         #score-bar {
             position: absolute;
             bottom: 0;
             width: 100%;
             background-color: #d8dee9ff;
         }
+
         #topMessage {
             display: flex;
             text-align: center;
@@ -47,14 +51,17 @@
             font-size: 40px;
             font-weight: bold;
         }
+
         .settings-accordion {
             max-width: 400px;
             margin-top: -1.25rem;
         }
+
         .full-width-bar {
             width: 80%;
             background-color: #f8f9fa;
         }
+
         .button-container {
             display: flex;
             margin: auto;
@@ -62,20 +69,25 @@
             width: 100%;
             max-width: 600px;
         }
+
         .button-container .btn {
             flex: 1;
             margin: 0 5px;
         }
+
         .button-container.second-row .btn {
             margin-top: 10px;
         }
+
         .hidden {
             display: none;
         }
+
         .container {
             display: flex;
             flex-direction: column;
         }
+
         .settings-accordion {
             display: flex;
             flex-direction: column;
@@ -93,29 +105,28 @@
         <div class="boardAndButtons">
             <div class="boardAndScorebar">
                 <div class="board-container">
-                        <div id="score-bar-container">
+                    <div id="score-bar-container">
                         <div id="score-bar"></div>
                     </div>
                     <div id="board" class="w-100"></div>
                 </div>
             </div>
-                <div class="hidden">
-                    <div class="full-width-bar" id="game-result"><span id="game-score"></span></div>
-                </div>
-                <div class="button-container mt-4">
-                    <button type="button" class="btn btn-primary" id="takeBackBtn">Take Back</button>
-                    <button type="button" class="btn btn-secondary" id="flipBoardBtn">Flip Board</button>
-                    <button type="button" class="btn btn-warning" id="switchBoardBtn">Swap Board</button>
-                    <button type="button" class="btn btn-danger" id="resetGameBtn">Reset Game</button>
-                </div>
+            <div class="button-container mt-4">
+                <button type="button" class="btn btn-primary" id="takeBackBtn">Take Back</button>
+                <button type="button" class="btn btn-secondary" id="flipBoardBtn">Flip Board</button>
+                <button type="button" class="btn btn-warning" id="switchBoardBtn">Swap Board</button>
+                <button type="button" class="btn btn-danger" id="resetGameBtn">Reset Game</button>
             </div>
             <div class="settings-accordion">
                 <div class="accordion my-4" id="accordionOptions">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Settings</button>
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="false"
+                                aria-controls="collapseOne">Settings</button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse" aria-labelledby="headingOne" data-bs-parent="#accordionOptions">
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionOptions">
                             <div class="accordion-body">
                                 <div class="hidden">
                                     <div class="mb-3">
@@ -140,7 +151,8 @@
                                 </div>
                                 <div class="hidden">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="timeDepthToggle" id="depthToggle" checked>
+                                        <input class="form-check-input" type="radio" name="timeDepthToggle" id="depthToggle"
+                                            checked>
                                         <label class="form-check-label" for="depthToggle">
                                             Use Depth
                                         </label>
@@ -161,7 +173,8 @@
                                         <option value="n">Knight</option>
                                     </select>
                                     <div class="btn-group mb-3 w-100" role="group" aria-label="Color selection">
-                                        <input type="radio" class="btn-check" name="color" id="color-white" autocomplete="off" checked>
+                                        <input type="radio" class="btn-check" name="color" id="color-white" autocomplete="off"
+                                            checked>
                                         <label class="btn btn-outline-primary" for="color-white">Play as White</label>
                                         <input type="radio" class="btn-check" name="color" id="color-black" autocomplete="off">
                                         <label class="btn btn-outline-primary" for="color-black">Play as Black</label>
@@ -173,9 +186,12 @@
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Moves</button>
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false"
+                                aria-controls="collapseThree">Moves</button>
                         </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionOptions">
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionOptions">
                             <div class="accordion-body">
                                 <h4>List Of Moves:</h4>
                                 <div id="pgn"></div>
@@ -185,9 +201,12 @@
                     <div class="hidden">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Classical Evaluation</button>
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFour" aria-expanded="false"
+                                    aria-controls="collapseFour">Classical Evaluation</button>
                             </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionOptions">
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                data-bs-parent="#accordionOptions">
                                 <div class="accordion-body">
                                     <h4>Evaluation:</h4>
                                     <pre id="evaluation"></pre>
@@ -196,9 +215,12 @@
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingFive">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Engine Analysis</button>
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFive" aria-expanded="false"
+                                    aria-controls="collapseFive">Engine Analysis</button>
                             </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionOptions">
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                                data-bs-parent="#accordionOptions">
                                 <div class="accordion-body">
                                     <div id="engineAnalysis" class="text-center"></div>
                                 </div>
@@ -206,9 +228,12 @@
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingSix">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">PGN & FEN</button>
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSix" aria-expanded="false"
+                                    aria-controls="collapseSix">PGN & FEN</button>
                             </h2>
-                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionOptions">
+                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                                data-bs-parent="#accordionOptions">
                                 <div class="accordion-body">
                                     <div class="mb-3">
                                         <label for="pgnInput" class="form-label">PGN</label>
@@ -227,6 +252,7 @@
                 </div>
             </div>
         </div>
+    </div>
     <script src="index.js"></script>
     <!-- Modal -->
     <div class="modal fade" id="gameResultModal" tabindex="-1" aria-labelledby="gameResultModalLabel" aria-hidden="true">
