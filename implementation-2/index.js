@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let useDepth = true;
     let currentMode = 'Player vs Engine';
     let board;
+    let gameOverInterval;
 
     function engineGame(options) {
         options = options || {};
@@ -38,41 +39,53 @@ document.addEventListener("DOMContentLoaded", function() {
             prepareMove();
         };
 
-        function showModal(title, message) {
+        // Function to handle game over scenarios
+        function handleGameOver() {
             let modalTitle = document.getElementById('gameResultModalLabel');
             let modalMessage = document.getElementById('gameResultMessage');
             let modalElement = new bootstrap.Modal(document.getElementById('gameResultModal'));
 
-            modalTitle.textContent = title;
-            modalMessage.textContent = message;
-            modalElement.show();
-        }
-
-        function checkGameOver() {
-            if (game.game_over()) {
-                announced_game_over = true;
-
-                if (game.in_checkmate()) {
-                    if (game.turn() === 'w') {
-                        showModal("Game Over!", "Game over, try again. Black wins.");
-                    } else {
-                        showModal("Congratulations!", "Congratulations! Your code is 1234. White wins!");
-                    }
-                } else if (game.in_stalemate()) {
-                    showModal("Stalemate!", "It's a stalemate. No one wins.");
-                } else if (game.in_draw()) {
-                    showModal("Draw!", "It's a draw.");
-                } else if (game.in_threefold_repetition()) {
-                    showModal("Draw by Repetition!", "The game is a draw by threefold repetition.");
-                } else if (game.insufficient_material()) {
-                    showModal("Draw!", "The game is a draw due to insufficient material.");
+            if (game.in_checkmate()) {
+                if (game.turn() === 'w') {
+                    modalTitle.textContent = "Game Over!";
+                    modalMessage.textContent = "Game over, try again. Black wins.";
                 } else {
-                    showModal("Game Over!", "The game has ended.");
+                    modalTitle.textContent = "Congratulations!";
+                    modalMessage.textContent = "Congratulations! Your code is 1234. White wins!";
                 }
+            } else if (game.in_stalemate()) {
+                modalTitle.textContent = "Stalemate!";
+                modalMessage.textContent = "It's a stalemate. No one wins.";
+            } else if (game.in_draw()) {
+                modalTitle.textContent = "Draw!";
+                modalMessage.textContent = "It's a draw.";
+            } else if (game.in_threefold_repetition()) {
+                modalTitle.textContent = "Draw by Repetition!";
+                modalMessage.textContent = "The game is a draw by threefold repetition.";
+            } else if (game.insufficient_material()) {
+                modalTitle.textContent = "Draw!";
+                modalMessage.textContent = "The game is a draw due to insufficient material.";
+            } else {
+                modalTitle.textContent = "Game Over!";
+                modalMessage.textContent = "The game has ended.";
             }
+
+            modalElement.show();
+
+            // Clear the interval after showing the modal
+            clearInterval(gameOverInterval);
         }
 
-        setInterval(checkGameOver, 1000);
+        // Start the interval to check game over status
+        gameOverInterval = setInterval(function() {
+            if (game.game_over()) {
+                handleGameOver();
+            }
+        }, 1000);
+
+        // Remaining game logic goes here...
+        // ...
+
 
         function uciCmd(cmd, which) {
             console.log("UCI: " + cmd);
