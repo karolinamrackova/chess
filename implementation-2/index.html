@@ -74,6 +74,7 @@
             justify-content: space-between;
             margin: 0 auto;
             position:absolute;
+            background-color:green;
         }
         .class1 {
             display:flex;
@@ -89,6 +90,21 @@
     <div class="container">
         <h3 class="text-center my-4"></h3>
         <div class="class1">
+               <div class="mb-4">
+                <div id="score-bar-container">
+                    <div id="score-bar"></div>
+                </div>
+                <div id="board" class="w-100"></div>
+                <div class="hidden">
+                    <div class="full-width-bar" id="game-result"><span id="game-score"></span></div>
+                </div>
+                <div class="button-container mt-4">
+                    <button type="button" class="btn btn-primary" id="takeBackBtn">Take Back</button>
+                    <button type="button" class="btn btn-secondary" id="flipBoardBtn">Flip Board</button>
+                    <button type="button" class="btn btn-warning" id="switchBoardBtn">Swap Board</button>
+                    <button type="button" class="btn btn-danger" id="resetGameBtn">Reset Game</button>
+                </div>
+            </div>
             <div class="settings-accordion">
                 <div class="accordion my-4" id="accordionOptions">
                     <div class="accordion-item">
@@ -204,21 +220,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-                        <div class="mb-4">
-                <div id="score-bar-container">
-                    <div id="score-bar"></div>
-                </div>
-                <div id="board" class="w-100"></div>
-                <div class="hidden">
-                    <div class="full-width-bar" id="game-result"><span id="game-score"></span></div>
-                </div>
-                <div class="button-container mt-4">
-                    <button type="button" class="btn btn-primary" id="takeBackBtn">Take Back</button>
-                    <button type="button" class="btn btn-secondary" id="flipBoardBtn">Flip Board</button>
-                    <button type="button" class="btn btn-warning" id="switchBoardBtn">Swap Board</button>
-                    <button type="button" class="btn btn-danger" id="resetGameBtn">Reset Game</button>
                 </div>
             </div>
         </div>
