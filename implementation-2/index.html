@@ -16,7 +16,6 @@
             max-width: 600px;
             margin: 20px auto;
             position: relative; /* Add this to position child elements correctly */
-            background-color:yellow;
         }
         #score-bar-container {
             position: absolute;
@@ -24,12 +23,14 @@
             width: 10px;
             height: 100%;
             background-color: #3b4252ff;
+            display:none;
         }
         #score-bar {
             position: absolute;
             bottom: 0;
             width: 100%;
             background-color: #d8dee9ff;
+            display:none;
         }
         #topMessage {
             display: flex;
@@ -84,21 +85,6 @@
     <div class="container">
         <h3 class="text-center my-4"></h3>
         <div class="class1">
-            <div class="mb-4">
-                <div id="score-bar-container">
-                    <div id="score-bar"></div>
-                </div>
-                <div id="board" class="w-100"></div>
-                <div class="hidden">
-                    <div class="full-width-bar" id="game-result"><span id="game-score"></span></div>
-                </div>
-                <div class="button-container mt-4">
-                    <button type="button" class="btn btn-primary" id="takeBackBtn">Take Back</button>
-                    <button type="button" class="btn btn-secondary" id="flipBoardBtn">Flip Board</button>
-                    <button type="button" class="btn btn-warning" id="switchBoardBtn">Swap Board</button>
-                    <button type="button" class="btn btn-danger" id="resetGameBtn">Reset Game</button>
-                </div>
-            </div>
             <div class="settings-accordion">
                 <div class="accordion my-4" id="accordionOptions">
                     <div class="accordion-item">
@@ -214,6 +200,21 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+                        <div class="mb-4">
+                <div id="score-bar-container">
+                    <div id="score-bar"></div>
+                </div>
+                <div id="board" class="w-100"></div>
+                <div class="hidden">
+                    <div class="full-width-bar" id="game-result"><span id="game-score"></span></div>
+                </div>
+                <div class="button-container mt-4">
+                    <button type="button" class="btn btn-primary" id="takeBackBtn">Take Back</button>
+                    <button type="button" class="btn btn-secondary" id="flipBoardBtn">Flip Board</button>
+                    <button type="button" class="btn btn-warning" id="switchBoardBtn">Swap Board</button>
+                    <button type="button" class="btn btn-danger" id="resetGameBtn">Reset Game</button>
                 </div>
             </div>
         </div>
