@@ -45,14 +45,27 @@ setInterval(function() {
     if (game.game_over()) {
         announced_game_over = true;
 
-        // Check if Black wins
+        let message = '';
+        let title = '';
+
         if (game.turn() === 'w' && game.in_checkmate()) {
-            alert("Game over, try again");
+            title = "Game Over";
+            message = "Game over, try again.";
         } else if (game.turn() === 'b' && game.in_checkmate()) {
-            alert("Congratulations! Your code is 1234");
+            title = "Congratulations!";
+            message = "Congratulations! Your code is 1234.";
         } else {
-            $('#game-score').text("Game Over");
+            title = "Game Over";
+            message = "Game Over";
         }
+
+        // Update the modal content
+        document.getElementById("gameResultModalLabel").textContent = title;
+        document.getElementById("gameResultMessage").textContent = message;
+
+        // Show the modal
+        let gameResultModal = new bootstrap.Modal(document.getElementById('gameResultModal'));
+        gameResultModal.show();
     }
 }, 1000);
 
