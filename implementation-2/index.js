@@ -39,33 +39,40 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
 setInterval(function() {
-    if (announced_game_over) {
-        return;
-    }
     if (game.game_over()) {
         announced_game_over = true;
 
-        let message = '';
-        let title = '';
+        let modalTitle = document.getElementById('gameResultModalLabel');
+        let modalMessage = document.getElementById('gameResultMessage');
+        let modalElement = new bootstrap.Modal(document.getElementById('gameResultModal'));
 
-        if (game.turn() === 'w' && game.in_checkmate()) {
-            title = "Game Over";
-            message = "Game over, try again.";
-        } else if (game.turn() === 'b' && game.in_checkmate()) {
-            title = "Congratulations!";
-            message = "Congratulations! Your code is 1234.";
+        // Check for specific game over conditions
+        if (game.in_checkmate()) {
+            if (game.turn() === 'w') {
+                modalTitle.textContent = "Game Over!";
+                modalMessage.textContent = "Game over, try again. Black wins.";
+            } else {
+                modalTitle.textContent = "Congratulations!";
+                modalMessage.textContent = "Congratulations! Your code is 1234. White wins!";
+            }
+        } else if (game.in_stalemate()) {
+            modalTitle.textContent = "Stalemate!";
+            modalMessage.textContent = "It's a stalemate. No one wins.";
+        } else if (game.in_draw()) {
+            modalTitle.textContent = "Draw!";
+            modalMessage.textContent = "It's a draw.";
+        } else if (game.in_threefold_repetition()) {
+            modalTitle.textContent = "Draw by Repetition!";
+            modalMessage.textContent = "The game is a draw by threefold repetition.";
+        } else if (game.insufficient_material()) {
+            modalTitle.textContent = "Draw!";
+            modalMessage.textContent = "The game is a draw due to insufficient material.";
         } else {
-            title = "Game Over";
-            message = "Game Over";
+            modalTitle.textContent = "Game Over!";
+            modalMessage.textContent = "The game has ended.";
         }
 
-        // Update the modal content
-        document.getElementById("gameResultModalLabel").textContent = title;
-        document.getElementById("gameResultMessage").textContent = message;
-
-        // Show the modal
-        let gameResultModal = new bootstrap.Modal(document.getElementById('gameResultModal'));
-        gameResultModal.show();
+        modalElement.show();
     }
 }, 1000);
 
