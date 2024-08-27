@@ -38,13 +38,18 @@ document.addEventListener("DOMContentLoaded", function() {
             prepareMove();
         };
 
-        setInterval(function() {
+ setInterval(function() {
             if (announced_game_over) {
                 return;
             }
             if (game.game_over()) {
                 announced_game_over = true;
                 $('#game-score').text("Game Over");
+
+                // Check if white won and display the congratulatory message
+                if (game.in_checkmate() && game.turn() === 'b') {
+                    alert("Congratulations! White wins!");
+                }
             }
         }, 1000);
 
@@ -88,11 +93,24 @@ document.addEventListener("DOMContentLoaded", function() {
             return moves;
         }
 
-        function prepareMove() {
+      function prepareMove() {
             $('#pgn').text(game.pgn());
             document.getElementById("pgnInput").value = game.pgn();
             document.getElementById("fenInput").value = game.fen();
             board.position(game.fen());
+
+            // Check if the game is over
+            if (game.game_over()) {
+                announced_game_over = true;
+                $('#game-score').text("Game Over");
+
+                // Check if white won and display the congratulatory message
+                if (game.in_checkmate() && game.turn() === 'b') {
+                    alert("Congratulations! White wins!");
+                }
+                return;
+            }
+
             if (currentMode === 'Player vs Engine') {
                 let turn = game.turn() == 'w' ? 'white' : 'black';
                 if (!game.game_over() && turn != playerColor) {
@@ -115,6 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         }
+
 
         evaler.onmessage = function(event) {
             let line;
