@@ -12,6 +12,11 @@
     <script src="./js/chessboard-1.0.0.min.js"></script>
     <script src="./js/chess.min.js"></script>
     <style>
+        .boardAndButtons {
+            display:flex;
+            flex-direction:column;
+            background-color:yellow;
+        }
         .boardAndScorebar {
             display: flex;
             flex-direction: row;
@@ -22,6 +27,7 @@
             display: flex;
             max-width: 610px;
             margin: 20px auto;
+            background-color:cyan;
         }
 
         #board {
@@ -50,11 +56,13 @@
             margin: 20px auto 0px auto;
             font-size: 40px;
             font-weight: bold;
+            background-color:black;
         }
 
         .settings-accordion {
             max-width: 400px;
             margin-top: -1.25rem;
+            background-color:green;
         }
 
         .full-width-bar {
@@ -86,6 +94,7 @@
         .container {
             display: flex;
             flex-direction: column;
+            background-color:salmon;
         }
 
         .settings-accordion {
@@ -117,6 +126,7 @@
                 <button type="button" class="btn btn-warning" id="switchBoardBtn">Swap Board</button>
                 <button type="button" class="btn btn-danger" id="resetGameBtn">Reset Game</button>
             </div>
+          </div>
             <div class="settings-accordion">
                 <div class="accordion my-4" id="accordionOptions">
                     <div class="accordion-item">
@@ -251,7 +261,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
     <script src="index.js"></script>
     <!-- Modal -->
