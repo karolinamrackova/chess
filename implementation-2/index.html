@@ -5,92 +5,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Chess</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- Chessboard CSS -->
     <link rel="stylesheet" href="./css/chessboard-1.0.0.min.css">
-    <script src="./js/jquery-3.7.1.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/chessboard-1.0.0.min.js"></script>
-    <script src="./js/chess.min.js"></script>
+    <!-- Custom CSS -->
     <style>
-        #board-container {
-            max-width: 600px;
-            margin: 20px auto;
-            position: relative;
-        }
-        #board {
-            width: 100%;
-            position: relative;
-            z-index: 1; /* Ensures the board is above other elements */
-        }
-        #score-bar-container {
-            position: absolute;
-            left: -10px; /* Adjust this to glue it closer to the left side of the board */
-            top: 0;
-            width: 10px;
-            height: 100%;
-            background-color: #3b4252ff;
-            z-index: 0; /* Ensures it's below the board */
-        }
-        #score-bar {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background-color: #d8dee9ff;
-        }
-        #topMessage {
+        /* Container for the entire layout */
+        .container-flex {
             display: flex;
-            text-align: center;
-            justify-content: center;
-            color: darkblue;
-            margin: 20px auto 0px auto;
-            font-size: 40px;
-            font-weight: bold;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px auto;
+            max-width: 800px; /* Adjust as needed */
         }
+
+        /* Container for the settings accordion */
         .settings-accordion {
+            width: 100%;
             max-width: 400px;
-            margin: 0 auto 20px auto;
-            padding-bottom: 20px;
+            margin-bottom: 20px;
         }
-        .full-width-bar {
-            width: 80%;
-            background-color: #f8f9fa;
+
+        /* Flex container for progress bar and chessboard */
+        #board-container {
+            display: flex;
+            align-items: stretch; /* Ensure both children stretch to the same height */
+            justify-content: center;
+            width: 100%;
+            max-width: 600px; /* Adjust based on chessboard size */
+            margin-bottom: 20px;
         }
+
+        /* Progress bar container */
+        #score-bar-container {
+            width: 10px;
+            background-color: #3b4252ff;
+            margin-right: 10px; /* Space between progress bar and board */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Align progress bar from bottom */
+        }
+
+        /* Progress bar itself */
+        #score-bar {
+            width: 100%;
+            height: 50%; /* Example: 50% filled */
+            background-color: #d8dee9ff;
+            transition: height 0.3s ease; /* Smooth transition for updates */
+        }
+
+        /* Chessboard styling */
+        #board {
+            width: 600px; /* Ensure this matches the max-width of #board-container */
+            height: 600px; /* Set a fixed height to match width for a square board */
+        }
+
+        /* Top message styling */
+        #topMessage {
+            text-align: center;
+            color: darkblue;
+            font-size: 2rem; /* Adjust size as needed */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Button container styling */
         .button-container {
             display: flex;
-            margin: auto;
             justify-content: space-between;
             width: 100%;
             max-width: 600px;
         }
+
         .button-container .btn {
             flex: 1;
             margin: 0 5px;
         }
-        .button-container.second-row .btn {
-            margin-top: 10px;
-        }
-        .hidden {
-            display: none; 
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-        }
+
+        /* Modal styling remains unchanged */
+        /* Ensure other elements are styled appropriately */
     </style>
 </head>
 
 <body>
-    <div id="topMessage">
-        Win the game to get your code, hihi
-    </div>
-    <div class="container">
+    <div class="container-flex">
+        <div id="topMessage">
+            Win the game to get your code, hihi
+        </div>
         <div class="settings-accordion">
             <div class="accordion my-4" id="accordionOptions">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Settings</button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse" aria-labelledby="headingOne" data-bs-parent="#accordionOptions">
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionOptions">
                         <div class="accordion-body">
                             <div class="hidden">
                                 <div class="mb-3">
@@ -201,12 +210,16 @@
                 </div>
             </div>
         </div>
+
+        <!-- Flex container for score bar and chessboard -->
         <div id="board-container">
             <div id="score-bar-container">
                 <div id="score-bar"></div>
             </div>
             <div id="board"></div>
         </div>
+
+        <!-- Buttons below the board -->
         <div class="button-container mt-4">
             <button type="button" class="btn btn-primary" id="takeBackBtn">Take Back</button>
             <button type="button" class="btn btn-secondary" id="flipBoardBtn">Flip Board</button>
@@ -214,7 +227,10 @@
             <button type="button" class="btn btn-danger" id="resetGameBtn">Reset Game</button>
         </div>
     </div>
+
+    <!-- JavaScript Files -->
     <script src="index.js"></script>
+
     <!-- Modal -->
     <div class="modal fade" id="gameResultModal" tabindex="-1" aria-labelledby="gameResultModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
