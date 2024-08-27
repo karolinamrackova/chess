@@ -38,43 +38,41 @@ document.addEventListener("DOMContentLoaded", function() {
             prepareMove();
         };
 
-setInterval(function() {
-    if (game.game_over()) {
-        announced_game_over = true;
+        function showModal(title, message) {
+            let modalTitle = document.getElementById('gameResultModalLabel');
+            let modalMessage = document.getElementById('gameResultMessage');
+            let modalElement = new bootstrap.Modal(document.getElementById('gameResultModal'));
 
-        let modalTitle = document.getElementById('gameResultModalLabel');
-        let modalMessage = document.getElementById('gameResultMessage');
-        let modalElement = new bootstrap.Modal(document.getElementById('gameResultModal'));
-
-        // Check for specific game over conditions
-        if (game.in_checkmate()) {
-            if (game.turn() === 'w') {
-                modalTitle.textContent = "Game Over!";
-                modalMessage.textContent = "Game over, try again. Black wins.";
-            } else {
-                modalTitle.textContent = "Congratulations!";
-                modalMessage.textContent = "Congratulations! Your code is 1234. White wins!";
-            }
-        } else if (game.in_stalemate()) {
-            modalTitle.textContent = "Stalemate!";
-            modalMessage.textContent = "It's a stalemate. No one wins.";
-        } else if (game.in_draw()) {
-            modalTitle.textContent = "Draw!";
-            modalMessage.textContent = "It's a draw.";
-        } else if (game.in_threefold_repetition()) {
-            modalTitle.textContent = "Draw by Repetition!";
-            modalMessage.textContent = "The game is a draw by threefold repetition.";
-        } else if (game.insufficient_material()) {
-            modalTitle.textContent = "Draw!";
-            modalMessage.textContent = "The game is a draw due to insufficient material.";
-        } else {
-            modalTitle.textContent = "Game Over!";
-            modalMessage.textContent = "The game has ended.";
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+            modalElement.show();
         }
 
-        modalElement.show();
-    }
-}, 1000);
+        function checkGameOver() {
+            if (game.game_over()) {
+                announced_game_over = true;
+
+                if (game.in_checkmate()) {
+                    if (game.turn() === 'w') {
+                        showModal("Game Over!", "Game over, try again. Black wins.");
+                    } else {
+                        showModal("Congratulations!", "Congratulations! Your code is 1234. White wins!");
+                    }
+                } else if (game.in_stalemate()) {
+                    showModal("Stalemate!", "It's a stalemate. No one wins.");
+                } else if (game.in_draw()) {
+                    showModal("Draw!", "It's a draw.");
+                } else if (game.in_threefold_repetition()) {
+                    showModal("Draw by Repetition!", "The game is a draw by threefold repetition.");
+                } else if (game.insufficient_material()) {
+                    showModal("Draw!", "The game is a draw due to insufficient material.");
+                } else {
+                    showModal("Game Over!", "The game has ended.");
+                }
+            }
+        }
+
+        setInterval(checkGameOver, 1000);
 
         function uciCmd(cmd, which) {
             console.log("UCI: " + cmd);
@@ -116,23 +114,13 @@ setInterval(function() {
             return moves;
         }
 
-      function prepareMove() {
+        function prepareMove() {
             $('#pgn').text(game.pgn());
             document.getElementById("pgnInput").value = game.pgn();
             document.getElementById("fenInput").value = game.fen();
             board.position(game.fen());
 
-            // Check if the game is over
-            if (game.game_over()) {
-                announced_game_over = true;
-                $('#game-score').text("Game Over");
-
-                // Check if white won and display the congratulatory message
-                if (game.in_checkmate() && game.turn() === 'b') {
-                    alert("Congratulations! White wins!");
-                }
-                return;
-            }
+            checkGameOver();
 
             if (currentMode === 'Player vs Engine') {
                 let turn = game.turn() == 'w' ? 'white' : 'black';
@@ -156,7 +144,6 @@ setInterval(function() {
                 }
             }
         }
-
 
         evaler.onmessage = function(event) {
             let line;
