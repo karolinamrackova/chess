@@ -14,7 +14,24 @@
     <style>
         #board {
             max-width: 600px;
-            margin: 80px auto; /* Fixed syntax error: Changed comma to space */
+            margin: 80px auto;
+            position: relative; /* Add this to position child elements correctly */
+        }
+        
+        #score-bar-container {
+            position: absolute;
+            left: -10px; /* Adjust this value to move it closer or further from the left edge */
+            top: 0;
+            width: 10px;
+            height: 100%;
+            background-color: #3b4252ff;
+        }
+        
+        #score-bar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #d8dee9ff;
         }
         #topMessage {
             display: flex;
