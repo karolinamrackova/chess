@@ -111,10 +111,6 @@
                                         <option value="Player vs Player">Player vs Player</option>
                                     </select>
                                 </div>
-                                <div class="mb-3" id="difficulty">
-                                    <label for="skillLevel" class="form-label">Computer Skill Level (0-20)</label>
-                                    <input type="number" class="form-control" id="skillLevel" value="20" min="0" max="20">
-                                </div>
                                 <div class="mb-3">
                                     <label for="depthLevel" class="form-label">Search Depth (1-30)</label>
                                     <input type="number" class="form-control" id="depthLevel" value="20" min="1" max="30">
@@ -209,6 +205,10 @@
             </div>
         </div>
     </div>
+                                    <div class="mb-3" id="difficulty">
+                                    <label for="skillLevel" class="form-label">Computer Skill Level (0-20)</label>
+                                    <input type="number" class="form-control" id="skillLevel" value="20" min="0" max="20">
+                                </div>
     <script src="index.js"></script>
     <!-- Modal -->
 <div class="modal fade" id="gameResultModal" tabindex="-1" aria-labelledby="gameResultModalLabel" aria-hidden="true">
