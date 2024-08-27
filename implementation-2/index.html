@@ -15,10 +15,9 @@
         #board {
             max-width: 600px;
             margin: 20px auto;
-            position: relative; /* Add this to position child elements correctly */
+            position:relative;
         }
         #score-bar-container {
-            position: absolute;
             left: 367px;
             width: 10px;
             height: 100%;
@@ -26,7 +25,6 @@
             display:none;
         }
         #score-bar {
-            position: absolute;
             bottom: 0;
             width: 100%;
             background-color: #d8dee9ff;
@@ -42,7 +40,7 @@
             font-weight: bold;
         }
         .settings-accordion {
-            max-width: 400px;
+            max-width: 100px;
             margin-top: -1.25rem; /* Align the top of the accordion with the top of the chessboard */
         }
         .full-width-bar {
@@ -75,6 +73,7 @@
             flex-direction: row;
             justify-content: space-between;
             margin: 0 auto;
+            position:absolute;
         }
         .class1 {
             display:flex;
