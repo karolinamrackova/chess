@@ -67,6 +67,9 @@
             margin-top: 10px; /* Space between button rows */
         
         }
+        .hidden {
+            display: hidden; 
+        }
     </style>
 </head>
 
@@ -114,15 +117,15 @@
                                  </div>
                                     <div class="mb-3">
                                     <label for="skillLevel" class="form-label">Computer Skill Level (0-20)</label>
-                                    <input type="number" class="form-control" id="skillLevel" value="20" min="0" max="20">
+                                    <input type="number" class="form-control" id="skillLevel" value="10" min="0" max="20">
                                 </div>
                                 <div class="mb-3">
                                     <label for="depthLevel" class="form-label">Search Depth (1-30)</label>
-                                    <input type="number" class="form-control" id="depthLevel" value="20" min="1" max="30">
+                                    <input type="number" class="form-control" id="depthLevel" value="10" min="1" max="30">
                                 </div>
                                 <div class="mb-3">
                                     <label for="thinkingTime" class="form-label">Thinking Time (1-30 seconds)</label>
-                                    <input type="number" class="form-control" id="thinkingTime" value="1" min="1" max="30">
+                                    <input type="number" class="form-control" id="thinkingTime" value="3" min="1" max="30">
                                 </div>
                                  <div class="hidden">
                                     <div class="form-check">
