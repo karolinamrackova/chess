@@ -14,26 +14,24 @@
     <style>
         #board {
             max-width: 600px;
-            margin: 80px, auto;
+            margin: 80px auto; /* Fixed syntax error: Changed comma to space */
         }
-        #topMessage{
+        #topMessage {
             display: flex;
-            text-align:center;
-            justify-content:center;
+            text-align: center;
+            justify-content: center;
             color: magenta;
-            margin: 120px, auto;
-            font-size: 64;
+            margin: 120px auto; /* Fixed syntax error: Changed comma to space */
+            font-size: 64px; /* Added px to font-size */
             font-weight: bold;
         }
         .settings-accordion {
             max-width: 400px;
             margin-top: -1.25rem; /* Align the top of the accordion with the top of the chessboard */
-         
         }
         .full-width-bar {
             width: 80%;
             background-color: #f8f9fa;
-    
         }
         #score-bar-container {
             position: absolute;
@@ -42,30 +40,25 @@
             width: 10px;
             height: 100%;
             background-color: #3b4252ff;
-        
         }
         #score-bar {
             position: absolute;
             bottom: 0;
             width: 100%;
             background-color: #d8dee9ff;
-     
         }
         .button-container {
             display: flex;
             justify-content: space-between;
             width: 100%;
             max-width: 600px; /* Ensure buttons do not surpass the width of the board */
-   
         }
         .button-container .btn {
             flex: 1;
             margin: 0 5px;
-         
         }
         .button-container.second-row .btn {
             margin-top: 10px; /* Space between button rows */
-        
         }
         .hidden {
             display: none; 
@@ -79,15 +72,15 @@
 
 <body>
     <button type="button" class="btn btn-primary" onclick="new bootstrap.Modal(document.getElementById('gameResultModal')).show();">
-    Test Modal
-</button>
+        Test Modal
+    </button>
     <div id="topMessage">
-    Win the game to get your code, hihi
+        Win the game to get your code, hihi
     </div>
     <div class="container">
         <h3 class="text-center my-4"></h3>
         <div class="class1">
-            <div class="col-12 col-md-7 d-flex flex-column align-items-center mb-4">
+            <div class="mb-4">
                 <div id="score-bar-container">
                     <div id="score-bar"></div>
                 </div>
@@ -102,7 +95,7 @@
                     <button type="button" class="btn btn-danger" id="resetGameBtn">Reset Game</button>
                 </div>
             </div>
-            <div class="col-12 col-md-5 settings-accordion">
+            <div class="settings-accordion">
                 <div class="accordion my-4" id="accordionOptions">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
@@ -110,7 +103,7 @@
                         </h2>
                         <div id="collapseOne" class="accordion-collapse" aria-labelledby="headingOne" data-bs-parent="#accordionOptions">
                             <div class="accordion-body">
-                                 <div class="hidden">
+                                <div class="hidden">
                                     <div class="mb-3">
                                         <label for="gameMode" class="form-label">Game Mode</label>
                                         <select class="form-select" id="gameMode">
@@ -118,8 +111,8 @@
                                             <option value="Player vs Player">Player vs Player</option>
                                         </select>
                                     </div>
-                                 </div>
-                                    <div class="mb-3">
+                                </div>
+                                <div class="mb-3">
                                     <label for="skillLevel" class="form-label">Computer Skill Level (0-20)</label>
                                     <input type="number" class="form-control" id="skillLevel" value="10" min="0" max="20">
                                 </div>
@@ -131,7 +124,7 @@
                                     <label for="thinkingTime" class="form-label">Thinking Time (1-30 seconds)</label>
                                     <input type="number" class="form-control" id="thinkingTime" value="3" min="1" max="30">
                                 </div>
-                                 <div class="hidden">
+                                <div class="hidden">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="timeDepthToggle" id="depthToggle" checked>
                                         <label class="form-check-label" for="depthToggle">
@@ -144,7 +137,7 @@
                                             Use Thinking Time
                                         </label>
                                     </div>
-                                 </div>
+                                </div>
                                 <div class="mb-3">
                                     <label for="promote" class="form-label">Promote Pawns To</label>
                                     <select class="form-select" id="promote">
@@ -153,13 +146,14 @@
                                         <option value="b">Bishop</option>
                                         <option value="n">Knight</option>
                                     </select>
-                                <div class="btn-group mb-3 w-100" role="group" aria-label="Color selection">
-                                    <input type="radio" class="btn-check" name="color" id="color-white" autocomplete="off" checked>
-                                    <label class="btn btn-outline-primary" for="color-white">Play as White</label>
-                                    <input type="radio" class="btn-check" name="color" id="color-black" autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="color-black">Play as Black</label>
+                                    <div class="btn-group mb-3 w-100" role="group" aria-label="Color selection">
+                                        <input type="radio" class="btn-check" name="color" id="color-white" autocomplete="off" checked>
+                                        <label class="btn btn-outline-primary" for="color-white">Play as White</label>
+                                        <input type="radio" class="btn-check" name="color" id="color-black" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="color-black">Play as Black</label>
+                                    </div>
+                                    <button type="button" class="btn btn-danger w-100" id="newGameBtn">Start New Game</button>
                                 </div>
-                                <button type="button" class="btn btn-danger w-100" id="newGameBtn">Start New Game</button>
                             </div>
                         </div>
                     </div>
@@ -174,7 +168,7 @@
                             </div>
                         </div>
                     </div>
-                  <div class="hidden">
+                    <div class="hidden">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingFour">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Classical Evaluation</button>
@@ -195,7 +189,7 @@
                                     <div id="engineAnalysis" class="text-center"></div>
                                 </div>
                             </div>
-                        </div>      
+                        </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingSix">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">PGN & FEN</button>
@@ -215,31 +209,29 @@
                                 </div>
                             </div>
                         </div>
-                     </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
     <script src="index.js"></script>
     <!-- Modal -->
-<div class="modal fade" id="gameResultModal" tabindex="-1" aria-labelledby="gameResultModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="gameResultModalLabel"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p id="gameResultMessage"></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Play Again</button>
-      </div>
+    <div class="modal fade" id="gameResultModal" tabindex="-1" aria-labelledby="gameResultModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="gameResultModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="gameResultMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Play Again</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
 </body>
 
 </html>
