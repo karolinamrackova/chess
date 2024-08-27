@@ -261,6 +261,7 @@ function showModal(title, message) {
                 board.orientation(playerColor);
             },
             setSkillLevel: function(skill) {
+                skill = 1;
                 if (skill < 0) {
                     skill = 0;
                 }
