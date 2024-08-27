@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoldChess.com - Stockfish 16 Web GUI</title>
+    <title>Birthday Chess</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/chessboard-1.0.0.min.css">
     <script src="./js/jquery-3.7.1.min.js"></script>
@@ -19,10 +19,12 @@
         .settings-accordion {
             max-width: 400px;
             margin-top: -1.25rem; /* Align the top of the accordion with the top of the chessboard */
+            visibility: hidden;
         }
         .full-width-bar {
             width: 80%;
             background-color: #f8f9fa;
+            visibility: hidden;
         }
         #score-bar-container {
             position: absolute;
@@ -31,38 +33,37 @@
             width: 10px;
             height: 100%;
             background-color: #3b4252ff;
+            visibility: hidden;
         }
         #score-bar {
             position: absolute;
             bottom: 0;
             width: 100%;
             background-color: #d8dee9ff;
+            visibility: hidden;
         }
         .button-container {
             display: flex;
             justify-content: space-between;
             width: 100%;
             max-width: 600px; /* Ensure buttons do not surpass the width of the board */
+            visibility: hidden;
         }
         .button-container .btn {
             flex: 1;
             margin: 0 5px;
+            visibility: hidden;
         }
         .button-container.second-row .btn {
             margin-top: 10px; /* Space between button rows */
+            visibility: hidden;
         }
     </style>
-    <div class="container">
-        <a href="https://boldchess.com/">
-            <img src="img/favicon/favicon.svg" width="80" height="80" class="d-block mx-auto mb-3">
-            <h1 class="text-center">BoldChess</h1>
-        </a>
-    </div>
 </head>
 
 <body>
     <div class="container">
-        <h3 class="text-center my-4">Play Chess Against StockFish 16</h3>
+        <h3 class="text-center my-4">Win the game to get your code</h3>
         <div class="row justify-content-center">
             <div class="col-12 col-md-7 d-flex flex-column align-items-center mb-4 position-relative">
                 <div id="score-bar-container">
