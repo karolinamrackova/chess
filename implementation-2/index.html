@@ -78,12 +78,25 @@
             right: 20px;
             width: 250px; /* Define a fixed width for the accordion */
         }
-        .settings-accordion {
+       .settings-accordion {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             background-color: green;
-            width: 100%;
+            width: 100px; /* Set a fixed width */
+        }
+        
+        .settings-accordion .accordion-button {
+            width: 100%; /* Ensure the button takes up the full width of the accordion */
+            text-align: left; /* Align the text to the left */
+        }
+        
+        .settings-accordion .accordion-item {
+            width: 100%; /* Ensure each accordion item maintains the same width */
+        }
+        
+        .settings-accordion .accordion-collapse {
+            width: 100%; /* Ensure the collapsed content does not expand beyond the set width */
         }
     </style>
 </head>
