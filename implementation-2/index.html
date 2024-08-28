@@ -39,14 +39,6 @@
             font-size: 40px;
             font-weight: bold;
         }
-        .settings-accordion {
-            max-width: 300px;
-            margin-top: -1.25rem; /* Align the top of the accordion with the top of the chessboard */
-        }
-        .full-width-bar {
-            width: 80%;
-            background-color: #f8f9fa;
-        }
         .button-container {
             display: flex;
             justify-content: space-between;
@@ -69,25 +61,29 @@
             justify-content: center;
             align-items: flex-start;
             width: 100%;
+            position: relative;
         }
         .board-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin: 0 auto;
             width: 100%;
             max-width: 600px;
+            margin: 0 auto;
         }
         .settings-container {
-            margin-left: 20px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 250px; /* Define a fixed width for the accordion */
         }
         .settings-accordion {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             background-color: green;
-            margin-left: 20px;
+            width: 100%;
         }
     </style>
 </head>
