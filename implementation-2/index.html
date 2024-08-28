@@ -116,6 +116,7 @@
         --bs-btn-disabled-color: #ffffff; /* Text color when disabled */
         --bs-btn-disabled-bg: #4CAF50; /* Background color when disabled */
         --bs-btn-disabled-border-color: #4CAF50; /* Border color when disabled */
+        font-weight: 400;
     }
         .btn-danger {
         --bs-btn-color: #ffffff; /* Text color */
@@ -134,20 +135,28 @@
         --bs-btn-disabled-border-color: #4CAF50; /* Border color when disabled */
             font-weight: 400;
     }
-        .btn-check:checked+.btn {
-            background-color: magenta;
+        .btn-check:checked+.btn {  /*play as white*/
+            background-color: white;
+            color:black;
+            border-color:white;
+            hover-bg: #f2f2f2;
+            hover-color:black;
+            hover-border-color:white;
+            active-bg: #808080;
+            font-weight:bold;
         }
         .btn-outline-primary {   /*play as black*/
-        --bs-btn-color: #000000; /* Text color */
-        --bs-btn-bg: lime; /* Background color */
-        --bs-btn-border-color: #ffffff; /* Border color */
-        --bs-btn-hover-color: #000000; /* Text color on hover */
-        --bs-btn-hover-bg: #f2f2f2; /* Background color on hover */
-        --bs-btn-hover-border-color: #660000; /* Border color on hover */
+        --bs-btn-color: white; /* Text color */
+        --bs-btn-bg: black; /* Background color */
+        --bs-btn-border-color: black; /* Border color */
+        --bs-btn-hover-color: white; /* Text color on hover */
+        --bs-btn-hover-bg: #1a1a1a; /* Background color on hover */
+        --bs-btn-hover-border-color: black; /* Border color on hover */
         --bs-btn-focus-shadow-rgb: 72, 187, 120; /* Shadow color on focus */
         --bs-btn-active-color: #ffffff; /* Text color when active */
-        --bs-btn-active-bg: #660000; /* Background color when active */
+        --bs-btn-active-bg: #808080; /* Background color when active */
         --bs-btn-active-border-color: #660000; /* Border color when active */
+            font-weight:bold;
 }
         #promote.form-select {
             margin-bottom:10px;
