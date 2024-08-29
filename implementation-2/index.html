@@ -134,13 +134,13 @@
     color: gold;
 }
 /* Custom Button Styles */
-.btn-primary, .btn-secondary, .btn-warning {
+.btn-primary, .btn-secondary, .btn-warning, .btn-danger {
     --bs-btn-color: midnightblue; /* Text color */
     --bs-btn-bg: whitesmoke; /* Background color */
     --bs-btn-border-color: midnightblue; /* Border color */
     --bs-btn-hover-color: midnightblue; /* Text color on hover */
     --bs-btn-hover-bg: gold; /* Background color on hover */
-    --bs-btn-hover-border: 3px solid midnightblue; /* Border color on hover */
+    --bs-btn-hover-border-color: midnightblue; /* Border color on hover */
     --bs-btn-focus-shadow-rgb: 72, 187, 120; /* Shadow color on focus */
     --bs-btn-active-color: midnightblue; /* Text color when active */
     --bs-btn-active-bg: yellow; /* Background color when active */
@@ -150,41 +150,19 @@
     --bs-btn-disabled-bg: #4CAF50; /* Background color when disabled */
     --bs-btn-disabled-border-color: #4CAF50; /* Border color when disabled */
     font-family: Clarkson, Helvetica, sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    padding: 1.5em 2.2em;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px grey;
+    font-size: 14px;  /* Smaller font size */
+    font-weight: 500; /* Slightly lighter font weight */
+    padding: 0.5em 1em; /* Reduced padding for a smaller button */
+    border-radius: 8px; /* Slightly smaller border radius */
+    box-shadow: 3px 3px 8px grey; /* Slightly smaller shadow */
     transition: background-color 0.2s, transform 0.2s;
     cursor: pointer;
 }
 
-/* Danger Button Style */
 .btn-danger {
-    --bs-btn-color: midnightblue; /* Text color */
-    --bs-btn-bg: whitesmoke; /* Background color */
-    --bs-btn-border-color: maroon; /* Border color */
-    --bs-btn-hover-color: midnightblue; /* Text color on hover */
-    --bs-btn-hover-bg: gold; /* Background color on hover */
-    --bs-btn-hover-border: 3px solid  maroon; /* Border color on hover */
-    --bs-btn-focus-shadow-rgb: 72, 187, 120; /* Shadow color on focus */
-    --bs-btn-active-color: midnightblue; /* Text color when active */
-    --bs-btn-active-bg: yellow; /* Background color when active */
-    --bs-btn-active-border-color: maroon; /* Border color when active */
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); /* Shadow when active */
-    --bs-btn-disabled-color: midnightblue; /* Text color when disabled */
-    --bs-btn-disabled-bg: #4CAF50; /* Background color when disabled */
-    --bs-btn-disabled-border-color: #4CAF50; /* Border color when disabled */
-    font-family: Clarkson, Helvetica, sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    padding: 1.5em 2.2em;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px grey;
-    transition: background-color 0.2s, transform 0.2s;
-    cursor: pointer;
+    border-color: maroon;
 }
-
+        
 /* Button Hover Effect */
 .btn-primary:hover, .btn-secondary:hover, .btn-warning:hover, .btn-danger:hover {
     background-color: gold;
