@@ -261,13 +261,9 @@ function showModal(title, message) {
                 board.orientation(playerColor);
             },
             setSkillLevel: function(skill) {
-    
-                if (skill < 0) {
-                    skill = 0;
-                }
-                if (skill > 20) {
-                    skill = 20;
-                }
+                
+                skill = 5; // HARDCODED SKILL LEVEL HERE
+                
                 uciCmd('setoption name Skill Level value ' + skill);
                 let max_err = Math.round((skill * -0.5) + 10);
                 let err_prob = Math.round((skill * 6.35) + 1);
