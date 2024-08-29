@@ -72,7 +72,10 @@
             max-width: 600px;
             margin: 0 auto;
         }
-        .modal-content {
+        
+       /*  ............................................... MODAL ..................................................*/
+        
+.modal-content {
     background-color: whitesmoke;
     border-radius: 10px;
     box-shadow: 5px 5px 10px grey;
@@ -81,25 +84,32 @@
 }
 
 .modal-header {
-    border-bottom: 2px solid midnightblue;
+    border-bottom: none; /* Removed border */
+    padding-bottom: 0; /* Remove extra padding */
 }
 
 .modal-title {
     font-family: 'Arial', sans-serif;
     font-size: 24px;
     font-weight: bold;
+    margin: 0; /* Align title at the top without extra space */
 }
 
 .modal-body {
     font-family: 'Arial', sans-serif;
     font-size: 18px;
-    margin: 20px auto;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px; /* Adjust height to help with vertical centering */
 }
 
 .modal-footer {
-    border-top: 2px solid midnightblue;
+    border-top: none; /* Removed border */
     display: flex;
     justify-content: center;
+    padding-top: 0; /* Remove extra padding */
 }
 
 .modal-footer .btn {
@@ -107,9 +117,12 @@
     color: midnightblue;
     border: 2px solid midnightblue;
     border-radius: 10px;
-    padding: 1.5em 2.2em;
-    box-shadow: 5px 5px 10px grey;
+    padding: 0.5em 1em;
+    box-shadow: 3px 3px 8px grey;
     transition: background-color 0.2s, transform 0.2s;
+    font-size: 14px;  /* Adjust font size to match other buttons */
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .modal-footer .btn:hover {
@@ -133,7 +146,9 @@
 .modal-footer .btn-close:hover {
     color: gold;
 }
-/* Custom Button Styles */
+        
+       /*  ............................................... BUTTONS ..................................................*/
+        
 .btn-primary, .btn-secondary, .btn-warning, .btn-danger {
     --bs-btn-color: midnightblue; /* Text color */
     --bs-btn-bg: whitesmoke; /* Background color */
