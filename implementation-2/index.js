@@ -65,7 +65,7 @@ function showModal(title, message) {
                     if (game.turn() === 'w') {
                         showModal("Game Over!", "Black wins, please try again.");
                     } else {
-                        showModal("Congratulations!🥳", "Your code is 1234. Go ahead and open the chest!🔓");
+                        showModal("Congratulations!🥳", "Your code is 272. Go ahead and open the chest!🔓");
                     }
                 } else if (game.in_stalemate()) {
                     showModal("Stalemate!", "It's a stalemate. No one wins.");
